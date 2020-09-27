@@ -1,0 +1,285 @@
+{
+  "livedata": {
+    "301978-3P21-1920": {
+      "device_id": "301978-3P21-1920",
+      "device_type": "inverter_1phase",
+      "device_model": "UNO-DM-3.3-TL-PLUS",
+      "timestamp": "2020-08-02T16:24:53+0200",
+      "points": [
+        {
+          "name": "CountryStd",
+          "value": 100.0
+        },
+        {
+          "name": "InputMode",
+          "value": 0.0
+        },
+        {
+          "name": "NumOfMPPT",
+          "value": 2.0
+        },
+        {
+          "name": "WRtg",
+          "value": 3330.0
+        },
+        {
+          "name": "Iin1",
+          "value": 3.885415554046631
+        },
+        {
+          "name": "Vin1",
+          "value": 241.37489318847657
+        },
+        {
+          "name": "Pin1",
+          "value": 934.8499145507813
+        },
+        {
+          "name": "Iin2",
+          "value": 1.2254917621612549
+        },
+        {
+          "name": "Vin2",
+          "value": 272.03009033203127
+        },
+        {
+          "name": "Pin2",
+          "value": 336.87322998046877
+        },
+        {
+          "name": "Pin",
+          "value": 1273.21923828125
+        },
+        {
+          "name": "Igrid",
+          "value": 5.006054878234863
+        },
+        {
+          "name": "Pgrid",
+          "value": 1229.1888427734376
+        },
+        {
+          "name": "Vgrid",
+          "value": 246.3666229248047
+        },
+        {
+          "name": "Qgrid",
+          "value": 4.466699600219727
+        },
+        {
+          "name": "Fgrid",
+          "value": 49.989688873291019
+        },
+        {
+          "name": "Ppeak",
+          "value": 1896.1263427734376
+        },
+        {
+          "name": "cosPhi",
+          "value": 1.0
+        },
+        {
+          "name": "SplitPhase",
+          "value": 0.0
+        },
+        {
+          "name": "VgridL1_N",
+          "value": 123.00464630126953
+        },
+        {
+          "name": "VgridL2_N",
+          "value": 123.26502990722656
+        },
+        {
+          "name": "PacTogrid",
+          "value": 1227.70947265625
+        },
+        {
+          "name": "Fan1rpm",
+          "value": 0.0
+        },
+        {
+          "name": "Temp1",
+          "value": 35.676177978515628
+        },
+        {
+          "name": "TempInv",
+          "value": 43.8126220703125
+        },
+        {
+          "name": "TempBst",
+          "value": 42.562347412109378
+        },
+        {
+          "name": "Riso",
+          "value": 20.0
+        },
+        {
+          "name": "IleakInv",
+          "value": 3241.1826171875
+        },
+        {
+          "name": "IleakDC",
+          "value": 3174.21240234375
+        },
+        {
+          "name": "Vgnd",
+          "value": 261.28411865234377
+        },
+        {
+          "name": "SysTime",
+          "value": 649700608.0
+        },
+        {
+          "name": "GlobState",
+          "value": 6.0
+        },
+        {
+          "name": "AlarmState",
+          "value": 0.0
+        },
+        {
+          "name": "DC1State",
+          "value": 2.0
+        },
+        {
+          "name": "DC2State",
+          "value": 2.0
+        },
+        {
+          "name": "InvState",
+          "value": 2.0
+        },
+        {
+          "name": "WarningFlags",
+          "value": 64.0
+        },
+        {
+          "name": "PACDeratingFlags",
+          "value": 0.0
+        },
+        {
+          "name": "QACDeratingFlags",
+          "value": 0.0
+        },
+        {
+          "name": "SACDeratingFlags",
+          "value": 0.0
+        },
+        {
+          "name": "FRT_state",
+          "value": 0.0
+        },
+        {
+          "name": "ClockState",
+          "value": 0.0
+        },
+        {
+          "name": "E0_runtime",
+          "value": 9046.0
+        },
+        {
+          "name": "E0_7D",
+          "value": 74910.0
+        },
+        {
+          "name": "E0_30D",
+          "value": 74910.0
+        },
+        {
+          "name": "E0_1Y",
+          "value": 74910.0
+        },
+        {
+          "name": "E1_runtime",
+          "value": 0.0
+        },
+        {
+          "name": "E1_7D",
+          "value": 0.0
+        },
+        {
+          "name": "E1_30D",
+          "value": 0.0
+        },
+        {
+          "name": "E2_runtime",
+          "value": 9046.0
+        },
+        {
+          "name": "E2_7D",
+          "value": 74965.0
+        },
+        {
+          "name": "E2_30D",
+          "value": 74965.0
+        },
+        {
+          "name": "E4_runtime",
+          "value": 4780.0
+        },
+        {
+          "name": "E4_7D",
+          "value": 40618.0
+        },
+        {
+          "name": "E4_30D",
+          "value": 40618.0
+        },
+        {
+          "name": "E5_runtime",
+          "value": 4662.0
+        },
+        {
+          "name": "E5_7D",
+          "value": 37797.0
+        },
+        {
+          "name": "E5_30D",
+          "value": 37797.0
+        },
+        {
+          "name": "Ein_runtime",
+          "value": 9442.0
+        },
+        {
+          "name": "Ein_7D",
+          "value": 78415.0
+        },
+        {
+          "name": "Ein_30D",
+          "value": 78415.0
+        },
+        {
+          "name": "Ein",
+          "value": 78415.0
+        },
+        {
+          "name": "Ein1",
+          "value": 40618.0
+        },
+        {
+          "name": "Ein2",
+          "value": 37797.0
+        },
+        {
+          "name": "ETotal",
+          "value": 74910.0
+        },
+        {
+          "name": "m126Mod_Ena",
+          "value": 0.0
+        },
+        {
+          "name": "m132Mod_Ena",
+          "value": 0.0
+        }
+      ]
+    },
+    "e8:e8:b7:a8:f0:ff": {
+      "device_id": "e8:e8:b7:a8:f0:ff",
+      "timestamp": "2020-08-02T16:24:51+0200",
+      "points": []
+    }
+  }
+}

@@ -1,0 +1,28 @@
+
+
+<input matInput
+   [value]="startDate"
+   [matDatepicker]="pickerStart"
+   placeholder="Start Date"
+   (dateInput)="changeStartDate('start', $event)"
+   (dateChange)="changeStartDate('start', $event)"/>
+<mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+<mat-datepicker #pickerStart [startAt]="startDate"></mat-datepicker>
+
+<input matInput
+       [value]="endDate"
+       [matDatepicker]="pickerEnd"
+       placeholder="End Date"
+       (dateInput)="changeStartDate('end', $event)"
+       (dateChange)="changeStartDate('end', $event)">
+<mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+<mat-datepicker #pickerEnd [startAt]="endDate"></mat-datepicker>
+
+
+
+<button (click)="refreshStat()">Refresh</button>
+<button (click)="exportStat()">Export</button>
+
+<div class="chart-container" style="position: relative; height:40vh; width:70vw">
+  <canvas id="canvas"></canvas>
+</div>
