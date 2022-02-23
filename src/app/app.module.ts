@@ -9,7 +9,6 @@ import {BarChartComponent} from './barChart/barChart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {LineChartComponent} from './lineChart/lineChart.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {LiveStatComponent} from './LiveStat/liveStat.component';
 import {ToolsBoxService} from './services/toolbox';
@@ -18,7 +17,7 @@ import {ToolsBoxService} from './services/toolbox';
 
 @NgModule({
   declarations: [
-    AppComponent, BarChartComponent, LineChartComponent, LiveStatComponent
+    AppComponent, BarChartComponent, LiveStatComponent
   ],
   imports: [
     HttpClientModule,

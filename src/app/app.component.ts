@@ -1,7 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {CallApi, HTTP_COMMAND} from './services/callApi';
-import { Chart } from 'chart.js';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +6,4 @@ import { Chart } from 'chart.js';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  barChart = true;
 }

@@ -3,10 +3,7 @@
   <h1>
     Solar inverter statistics
   </h1>
-  <mat-slide-toggle (click)="barChart=!barChart" [checked]="barChart">Display BarChart</mat-slide-toggle>
 </div>
 
 <app-live-stat></app-live-stat>
-<app-bar-chart *ngIf="barChart"></app-bar-chart>
-
-<app-line-chart *ngIf="!barChart"></app-line-chart>
+<app-bar-chart></app-bar-chart>

@@ -1,9 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Chart} from 'chart.js';
 import {CallApi, HTTP_COMMAND} from '../services/callApi';
-import * as moment from 'moment';
-import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {ToolsBoxService} from '../services/toolbox';
 
 @Component({
