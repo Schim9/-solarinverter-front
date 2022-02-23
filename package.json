@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "^12.2.16",
+    "@angular-devkit/build-angular": "^13.2.4",
     "@angular/animations": "^12.2.16",
     "@angular/cdk": "^10.1.1",
     "@angular/common": "~12.2.16",
