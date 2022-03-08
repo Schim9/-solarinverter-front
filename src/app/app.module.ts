@@ -12,6 +12,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {LiveStatComponent} from './LiveStat/liveStat.component';
 import {ToolsBoxService} from './services/toolbox';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -26,7 +27,8 @@ import {ToolsBoxService} from './services/toolbox';
     BrowserAnimationsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatInputModule
   ],
   exports: [
   ],

@@ -2,14 +2,16 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 
 @Injectable()
 export class ToolsBoxService {
-  @Output() fireRefreshValue: EventEmitter<any> = new EventEmitter();
+  @Output() fireRefresh: EventEmitter<any> = new EventEmitter();
+  @Output() fireReceiveUpdatedValue: EventEmitter<number> = new EventEmitter();
 
   // Will emit an event in order to trigger data update
-  refreshValues = () => {
-    this.fireRefreshValue.emit();
+  getRefreshTrigger = (): EventEmitter<any> => {
+    return this.fireRefresh;
   }
 
-  getEmittedValue = (): EventEmitter<any> => {
-    return this.fireRefreshValue;
+  // Will emit an event in order to notify a data update
+  getReceiveUpdateTrigger = (): EventEmitter<number> => {
+    return this.fireReceiveUpdatedValue;
   }
 }

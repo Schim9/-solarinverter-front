@@ -4,8 +4,8 @@
    [value]="startDate"
    [matDatepicker]="pickerStart"
    placeholder="Start Date"
-   (dateInput)="changeStartDate('start', $event)"
-   (dateChange)="changeStartDate('start', $event)"/>
+   (dateInput)="changeDate('start', $event)"
+   (dateChange)="changeDate('start', $event)"/>
 <mat-datepicker-toggle matSuffix [for]="pickerStart"></mat-datepicker-toggle>
 <mat-datepicker #pickerStart [startAt]="startDate"></mat-datepicker>
 
@@ -13,8 +13,8 @@
        [value]="endDate"
        [matDatepicker]="pickerEnd"
        placeholder="End Date"
-       (dateInput)="changeStartDate('end', $event)"
-       (dateChange)="changeStartDate('end', $event)">
+       (dateInput)="changeDate('end', $event)"
+       (dateChange)="changeDate('end', $event)">
 <mat-datepicker-toggle matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
 <mat-datepicker #pickerEnd [startAt]="endDate"></mat-datepicker>
 

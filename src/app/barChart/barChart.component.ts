@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import { Chart } from 'chart.js';
 import {CallApi, HTTP_COMMAND} from '../services/callApi';
 import * as moment from 'moment';
@@ -17,6 +17,7 @@ export class BarChartComponent implements OnInit  {
   values: number[] = [];
   barchart: Chart;
 
+  currentDate = moment().startOf('day').format('YYYY-MM-DD');
   startDate = new Date(moment().startOf('month').format('YYYY-MM-DD hh:mm'));
   endDate = new Date(moment().endOf('month').format('YYYY-MM-DD hh:mm'));
 
@@ -26,15 +27,59 @@ export class BarChartComponent implements OnInit  {
 
   ngOnInit() {
     this.refreshStat();
+    // In case live data is updated, we may need to refresh the graph
+    this.toolsBox.getReceiveUpdateTrigger().subscribe(
+      dayProd => {
+        console.log('New value received from live-data endpoint:', dayProd);
+        if (dayProd == null || dayProd === 0) {
+          console.log('no data received, no need to update');
+        } else {
+          // Check the stored current date production
+          const currentDateProd = this.data.find(element => element.date === this.currentDate);
+          console.log('currentDateProd is ', currentDateProd);
+          if (dayProd !== Number(currentDateProd)) {
+            // Data has changed
+            this.refreshStat();
+          }
+        }
+        return of(null);
+      }
+    );
   }
 
-  clearData = () => {
-    this.data = [];
-    this.timestamps = [];
-    this.values = [];
+  refreshStat = () => {
+    // this.toolsBox.refreshValues();
+    this.getInverterStat().subscribe(
+      (res: any) => {
+        this.clearData();
+        const receivedData: [any] = res;
+        receivedData.map(element => {
+          // Format data
+          const date = element.date;
+          const value = element.value;
+          // Store data for export
+          this.data.unshift({date: date, prod: value});
+          // Store data for display
+          this.timestamps.unshift(date);
+          this.values.unshift(value);
+        });
+        this.displayChart();
+      },
+      (err) => {
+        console.log('Error while getting inverter stats', err);
+      });
   }
 
-  changeStartDate(type: string, event: MatDatepickerInputEvent<Date>) {
+  getInverterStat = (): Observable<any> => {
+    const startDate: string = moment(this.startDate, moment.defaultFormat).format('YYYY-MM-DD');
+    const endDate: string = moment(this.endDate, moment.defaultFormat).format('YYYY-MM-DD');
+    const serviceURi = '/daily-prod' +
+      '?start=' + startDate +
+      '&end=' + endDate;
+    return this.callAPI.call(HTTP_COMMAND.GET, serviceURi);
+  }
+
+  changeDate(type: string, event: MatDatepickerInputEvent<Date>) {
     const newDate = new Date(moment(event.value, moment.defaultFormat).format('YYYY-MM-DD hh:mm'));
     switch (type) {
       case 'start':
@@ -48,7 +93,12 @@ export class BarChartComponent implements OnInit  {
     }
   }
 
-  displayChart = () => {
+  exportStat = () => {
+    window.open('data:text/json,' + encodeURIComponent(JSON.stringify(this.data)),
+      '_blank').focus();
+  }
+
+  private displayChart = () => {
 
       this.barchart = new Chart('canvas', {
         type: 'bar',
@@ -78,41 +128,9 @@ export class BarChartComponent implements OnInit  {
         }
       });
   }
-
-  getInverterStat = (): Observable<any> => {
-    const startDate: string = moment(this.startDate, moment.defaultFormat).format('YYYY-MM-DD');
-    const endDate: string = moment(this.endDate, moment.defaultFormat).format('YYYY-MM-DD');
-    const serviceURi = '/daily-prod' +
-      '?start=' + startDate +
-      '&end=' + endDate;
-    return this.callAPI.call(HTTP_COMMAND.GET, serviceURi);
-  }
-
-  refreshStat = () => {
-    this.toolsBox.refreshValues();
-    this.getInverterStat().subscribe(
-      (res: any) => {
-        this.clearData();
-        const receivedData: [any] = res;
-        receivedData.map(element => {
-          // Format data
-          const date = element.date;
-          const value = element.value;
-          // Store data for export
-          this.data.unshift({date: date, prod: value});
-          // Store data for display
-          this.timestamps.unshift(date);
-          this.values.unshift(value);
-        });
-        this.displayChart();
-      },
-      (err) => {
-        console.log('err', err);
-      });
-  }
-
-  exportStat = () => {
-    window.open('data:text/json,' + encodeURIComponent(JSON.stringify(this.data)),
-      '_blank').focus();
+  private clearData = () => {
+    this.data = [];
+    this.timestamps = [];
+    this.values = [];
   }
 }

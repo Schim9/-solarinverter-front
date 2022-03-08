@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CallApi, HTTP_COMMAND} from '../services/callApi';
 import {ToolsBoxService} from '../services/toolbox';
+import {catchError, map} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-live-stat',
@@ -19,23 +21,30 @@ export class LiveStatComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getInverterStat();
-    this.toolsBox.getEmittedValue().subscribe(event => this.getInverterStat());
+    this.getInverterStat().subscribe();
+    // In case the user click the refresh button, live data has to be updated
+    this.toolsBox.getRefreshTrigger().subscribe(() => this.getInverterStat().subscribe());
   }
 
   getInverterStat = () => {
     const serviceURi = '/livedata/';
-    this.callAPI.call(HTTP_COMMAND.GET, serviceURi).subscribe(
-      (element: any) => {
+    return this.callAPI.call(HTTP_COMMAND.GET, serviceURi).pipe(
+      map(
+        (element: any) => {
           // Format data
           this.currentDate = element.date;
           this.runtimeProd = element.dayProd;
           this.weekProd = element.weekProd;
           this.monthProd = element.monthProd;
           this.yearProd = element.yearProd;
-      },
-      (err) => {
-        console.log('err', err);
-      });
+
+          return  element.dayProd;
+      }),
+      map(dayprod => this.toolsBox.getReceiveUpdateTrigger().emit(dayprod)),
+      catchError(err => {
+        console.log('Error during getting live data', err);
+        return of(null);
+      })
+      );
   }
 }
