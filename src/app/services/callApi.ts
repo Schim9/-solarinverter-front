@@ -5,14 +5,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class CallApi {
-  // serverAddress: String = 'https://fimer.kaminski.lu';
    serverAddress: String = 'https://solar-back.kaminski.lu/api';
-  // serverAddress: String = 'http://localhost:8080/api';
   constructor(private newHttp: HttpClient) {
-  }
-
-  mock = (command: HTTP_COMMAND, endpoint: string, param?: any): Observable<any> => {
-    return this.newHttp.get('http://localhost:3000/' + endpoint + (param ? param : ''));
   }
 
   call = (command: HTTP_COMMAND, endpoint: string, param?: any): Observable<any> => {

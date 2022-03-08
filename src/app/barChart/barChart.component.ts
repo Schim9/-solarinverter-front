@@ -37,9 +37,11 @@ export class BarChartComponent implements OnInit  {
           // Check the stored current date production
           const currentDateProd = this.data.find(element => element.date === this.currentDate);
           console.log('currentDateProd is ', currentDateProd);
-          if (dayProd !== Number(currentDateProd)) {
+          if (!currentDateProd || dayProd !== Number(currentDateProd.prod)) {
             // Data has changed
             this.refreshStat();
+          } else {
+            console.log('No need to call the api');
           }
         }
         return of(null);
